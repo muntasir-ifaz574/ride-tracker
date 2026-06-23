@@ -125,14 +125,11 @@ class LiveRideTrackingScreen extends ConsumerWidget {
             ),
           ),
 
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: RideBottomSheet(
-              driver: state.driver,
-              fare: state.fare,
-              isTripCompleted: state.isTripCompleted,
-              remainingMinutes: state.remainingMinutes,
-            ),
+          RideBottomSheet(
+            driver: state.driver,
+            fare: state.fare,
+            isTripCompleted: state.isTripCompleted,
+            remainingMinutes: state.remainingMinutes,
           ),
         ],
       ),
