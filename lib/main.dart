@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'presentation/screens/live_ride_tracking_screen.dart';
+import 'presentation/screens/splash_screen.dart';
 import 'presentation/theme/app_colors.dart';
 
 Future<void> main() async {
@@ -25,7 +25,7 @@ class RideTrackerApp extends StatelessWidget {
         useMaterial3: true,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const LiveRideTrackingScreen(),
+      home: const SplashScreen(),
     );
   }
 }

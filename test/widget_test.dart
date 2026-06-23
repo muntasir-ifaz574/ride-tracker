@@ -1,11 +1,12 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:ridetracker/main.dart';
 import 'package:ridetracker/domain/entities/driver.dart';
 import 'package:ridetracker/domain/entities/fare.dart';
 import 'package:ridetracker/domain/repositories/ride_repository.dart';
 import 'package:ridetracker/domain/state/ride_tracking_notifier.dart';
+import 'package:ridetracker/presentation/screens/live_ride_tracking_screen.dart';
 
 class MockRideRepository implements RideRepository {
   @override
@@ -46,7 +47,7 @@ void main() {
         overrides: [
           rideRepositoryProvider.overrideWithValue(MockRideRepository()),
         ],
-        child: const RideTrackerApp(),
+        child: const MaterialApp(home: LiveRideTrackingScreen()),
       ),
     );
 
