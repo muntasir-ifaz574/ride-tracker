@@ -24,7 +24,7 @@ class GoogleDirectionsService {
     String apiKey,
   ) async {
     if (apiKey.trim().isEmpty) {
-      throw Exception("API Key is placeholder or empty.");
+      throw Exception("API Key is empty.");
     }
 
     final url = Uri.parse(
