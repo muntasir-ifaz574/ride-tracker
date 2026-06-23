@@ -112,7 +112,7 @@ flutter run
 A few things were done specifically to keep the map animation at 60 fps without any lag:
 
 - The car marker is updated using raw bytes cached once at startup — no file I/O during animation.
-- Camera and marker updates are throttled to ~30 fps to avoid flooding the platform bridge.
+- Camera and marker updates are throttled to 60 fps to avoid flooding the platform bridge.
 - The car rotation smoothly interpolates to avoid snapping when turning corners.
 - Only the marker layer re-renders on each frame — the rest of the UI is untouched.
 
