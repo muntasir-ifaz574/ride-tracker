@@ -8,7 +8,7 @@ A ride tracking mobile app built with Flutter. Watch your driver move on the map
 
 > Click the thumbnail below to watch the full app demo.
 
-[![Watch Demo Video](https://img.shields.io/badge/Watch%20Demo-Google%20Drive-red?style=for-the-badge&logo=google-drive)](https://drive.google.com/YOUR_VIDEO_LINK_HERE)
+[![Watch Demo Video](https://img.shields.io/badge/Watch%20Demo-Google%20Drive-red?style=for-the-badge&logo=google-drive)](https://drive.google.com/drive/folders/1OZL-z3k9WUJsgtgmvYYlXdipADsqDTM8?usp=sharing)
 
 
 ---
