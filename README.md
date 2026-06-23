@@ -4,6 +4,15 @@ A ride tracking mobile app built with Flutter. Watch your driver move on the map
 
 ---
 
+## Watch the Demo
+
+> Click the thumbnail below to watch the full app demo.
+
+[![Watch Demo Video](https://img.shields.io/badge/Watch%20Demo-Google%20Drive-red?style=for-the-badge&logo=google-drive)](https://drive.google.com/YOUR_VIDEO_LINK_HERE)
+
+
+---
+
 ## Download the App
 
 > Click the button below to download the APK directly to your Android phone.
@@ -11,14 +20,6 @@ A ride tracking mobile app built with Flutter. Watch your driver move on the map
 [![Download APK](https://img.shields.io/badge/Download%20APK-Google%20Drive-blue?style=for-the-badge&logo=google-drive)](https://drive.google.com/drive/folders/1ijqvHDO6sBYhSLuciSsnd8nXtFPXXGmC?usp=sharing)
 
 > **Note:** On your phone, you may need to allow "Install from unknown sources" in your settings since this is a direct APK (not from the Play Store).
-
----
-
-## Watch the Demo
-
-> Click the thumbnail below to watch the full app demo on Google Drive.
-
-[![Watch Demo Video](https://img.shields.io/badge/Watch%20Demo-Google%20Drive-red?style=for-the-badge&logo=google-drive)](https://drive.google.com/YOUR_VIDEO_LINK_HERE)
 
 ---
 
