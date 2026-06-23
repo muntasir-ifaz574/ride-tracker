@@ -68,7 +68,7 @@ class _LiveMapViewState extends State<LiveMapView>
       target: widget.routePoints.isNotEmpty
           ? widget.routePoints.first
           : const LatLng(23.8729, 90.3917),
-      zoom: 18.5,
+      zoom: 17.5,
       tilt: 45.0,
     );
 
@@ -210,7 +210,7 @@ class _LiveMapViewState extends State<LiveMapView>
       CameraUpdate.newCameraPosition(
         CameraPosition(
           target: position,
-          zoom: 18.5,
+          zoom: 17.5,
           bearing: bearing,
           tilt: 45.0,
         ),
@@ -230,7 +230,7 @@ class _LiveMapViewState extends State<LiveMapView>
       CameraUpdate.newCameraPosition(
         CameraPosition(
           target: _animatedDriverPosition!,
-          zoom: 18.5,
+          zoom: 17.5,
           bearing: _driverRotation,
           tilt: 45.0,
         ),
