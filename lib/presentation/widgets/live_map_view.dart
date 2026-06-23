@@ -34,8 +34,9 @@ class _LiveMapViewState extends State<LiveMapView>
   double _driverRotation = 0.0;
   double _startRotation = 0.0;
   double _targetRotation = 0.0;
-
   bool _isCameraLocked = true;
+  bool _isRecentering = false;
+  bool _userInterruptedRecenter = false;
 
   int _lastUpdateMillis = 0;
 
@@ -67,7 +68,7 @@ class _LiveMapViewState extends State<LiveMapView>
       target: widget.routePoints.isNotEmpty
           ? widget.routePoints.first
           : const LatLng(23.8729, 90.3917),
-      zoom: 17.5,
+      zoom: 18.5,
       tilt: 45.0,
     );
 
@@ -197,7 +198,7 @@ class _LiveMapViewState extends State<LiveMapView>
 
     _updateMarkers();
 
-    if (_isCameraLocked) {
+    if (_isCameraLocked && !_isRecentering) {
       _updateCamera(_animatedDriverPosition!, _driverRotation);
     }
   }
@@ -209,7 +210,7 @@ class _LiveMapViewState extends State<LiveMapView>
       CameraUpdate.newCameraPosition(
         CameraPosition(
           target: position,
-          zoom: 17.5,
+          zoom: 18.5,
           bearing: bearing,
           tilt: 45.0,
         ),
@@ -217,21 +218,32 @@ class _LiveMapViewState extends State<LiveMapView>
     );
   }
 
-  void _recenterCamera() {
+  void _recenterCamera() async {
+    if (_isRecentering || _animatedDriverPosition == null) return;
+
     setState(() {
-      _isCameraLocked = true;
+      _isRecentering = true;
+      _userInterruptedRecenter = false;
     });
-    if (_animatedDriverPosition != null) {
-      _mapController?.animateCamera(
-        CameraUpdate.newCameraPosition(
-          CameraPosition(
-            target: _animatedDriverPosition!,
-            zoom: 17.5,
-            bearing: _driverRotation,
-            tilt: 45.0,
-          ),
+
+    await _mapController?.animateCamera(
+      CameraUpdate.newCameraPosition(
+        CameraPosition(
+          target: _animatedDriverPosition!,
+          zoom: 18.5,
+          bearing: _driverRotation,
+          tilt: 45.0,
         ),
-      );
+      ),
+    );
+
+    if (mounted) {
+      setState(() {
+        _isRecentering = false;
+        if (!_userInterruptedRecenter) {
+          _isCameraLocked = true;
+        }
+      });
     }
   }
 
@@ -321,6 +333,9 @@ class _LiveMapViewState extends State<LiveMapView>
         RepaintBoundary(
           child: Listener(
             onPointerDown: (event) {
+              if (_isRecentering) {
+                _userInterruptedRecenter = true;
+              }
               if (_isCameraLocked) {
                 setState(() {
                   _isCameraLocked = false;
@@ -343,12 +358,12 @@ class _LiveMapViewState extends State<LiveMapView>
           ),
         ),
 
-        if (!_isCameraLocked)
+        if (!_isCameraLocked && !_isRecentering)
           Positioned(
             bottom: 300,
             right: 16,
             child: AnimatedOpacity(
-              opacity: !_isCameraLocked ? 1.0 : 0.0,
+              opacity: (!_isCameraLocked && !_isRecentering) ? 1.0 : 0.0,
               duration: const Duration(milliseconds: 250),
               child: FloatingActionButton.small(
                 onPressed: _recenterCamera,
